@@ -33,7 +33,7 @@ public class SettingsManager : MonoBehaviour
 
     public void SetMusicsStatus(bool IsEnable)
     {
-        musicSource.mute = IsEnable;
+        musicSource.mute = !IsEnable;
 
         if (IsEnable)
         {
@@ -49,7 +49,7 @@ public class SettingsManager : MonoBehaviour
 
     public void SetSoundsStatus(bool IsEnable)
     {
-        soundSource.mute = IsEnable;
+        soundSource.mute = !IsEnable;
 
         if(IsEnable)
         {

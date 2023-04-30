@@ -15,10 +15,23 @@ public class UIManager : MonoBehaviour
     [SerializeField] GameObject game;
     [SerializeField] GameObject achievements;
     [SerializeField] GameObject settings;
+    [SerializeField] GameObject pause;
+
+    [Space(10)]
+    [SerializeField] GameObject landOther;
 
 
     [Space(10)]
     [SerializeField] AudioSource sfxSource;
+
+    private void Awake()
+    {
+        Obstacle.OnCollided += () =>
+        {
+            sfxSource.Play();
+            StartGame();
+        };
+    }
 
 
     private void Start()
@@ -26,6 +39,10 @@ public class UIManager : MonoBehaviour
         OpenMenu();
     }
 
+    public void Pause(bool IsPause)
+    {
+        pause.SetActive(IsPause);
+    }
 
     public void OpenSettings()
     {
@@ -46,11 +63,14 @@ public class UIManager : MonoBehaviour
             Destroy(_gameRef);
         }
 
+        landOther.SetActive(false);
+
         var _parent = GameObject.Find("Environment").transform;
         var _prefab = Resources.Load<GameObject>("level");
 
         _gameRef = Instantiate(_prefab, _parent);
 
+        pause.SetActive(false);
         menu.SetActive(false);
         game.SetActive(true);
     }
@@ -62,6 +82,9 @@ public class UIManager : MonoBehaviour
             Destroy(_gameRef);
         }
 
+        landOther.SetActive(true);
+
+        pause.SetActive(false);
         settings.SetActive(false);
         achievements.SetActive(false);
         game.SetActive(false);
