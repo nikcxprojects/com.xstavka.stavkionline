@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "372661261172",
+    "project_id": "xxxxbexa",
+    "storage_bucket": "xxxxbexa.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:372661261172:android:41a853087f9f81e1c09221",
+        "android_client_info": {
+          "package_name": "com.xstavka.stavkionline"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "372661261172-mogj7fd5e50mjbt3dunij26tqfifrsdg.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC7ZAu3zAfIqY6DBFnGcIlMyVV_rZLZ8hE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "372661261172-mogj7fd5e50mjbt3dunij26tqfifrsdg.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
