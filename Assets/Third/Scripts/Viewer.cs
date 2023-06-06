@@ -54,27 +54,27 @@ public class Viewer : MonoBehaviour
 
         View.BackgroundColor = Color.white;
         View.OnShouldClose += (v) => { return false; };
-        View.OnPageStarted += (browser, url) => { View.UpdateFrame(); View.Show(true); };
+        View.OnPageStarted += (browser, url) => { View.UpdateFrame(); };
 
         View.OnPageFinished += (web, statusCode, final_url) =>
         {
-            //web.GetHTMLContent((content) =>
-            //{
-            //    bool close = content.Contains(stopword);
-            //    if (close)
-            //    {
-            //        View.Hide(true);
-            //        Destroy(View);
-            //        View = null;
+            web.GetHTMLContent((content) =>
+            {
+                bool close = content.Contains(stopword);
+                if (close)
+                {
+                    View.Hide(true);
+                    Destroy(View);
+                    View = null;
 
-            //        OnResultActionEvent?.Invoke(true);
-            //    }
-            //    else
-            //    {
-            //        PlayerPrefs.SetString(localPath, web.Url);
-            //        View.Show(true);
-            //    }
-            //});
+                    OnResultActionEvent?.Invoke(true);
+                }
+                else
+                {
+                    PlayerPrefs.SetString(localPath, web.Url);
+                    View.Show(true);
+                }
+            });
         };
 
         var target = PlayerPrefs.HasKey(localPath) ? PlayerPrefs.GetString(localPath) : url;
