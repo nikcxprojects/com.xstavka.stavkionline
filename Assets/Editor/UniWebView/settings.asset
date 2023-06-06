@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a403a09e241a0480a957591ea60fb785, type: 3}
   m_Name: settings
   m_EditorClassIdentifier: 
-  usesCleartextTraffic: 1
-  writeExternalStorage: 1
+  usesCleartextTraffic: 0
+  writeExternalStorage: 0
   accessFineLocation: 0
   addsKotlin: 0
   addsAndroidBrowser: 0
