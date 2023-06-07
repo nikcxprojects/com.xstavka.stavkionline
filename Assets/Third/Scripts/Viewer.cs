@@ -56,39 +56,39 @@ public class Viewer : MonoBehaviour
         View.OnShouldClose += (v) => { return false; };
         View.OnPageStarted += (browser, url) => 
         {
-            View.Show();
-            View.UpdateFrame();
-            //if(PlayerPrefs.HasKey(localPath))
-            //{
-            //    View.Show();
-            //    View.UpdateFrame();
-            //}
+            if (PlayerPrefs.HasKey(localPath))
+            {
+                View.Show();
+                View.UpdateFrame();
+            }
         };
 
         View.OnPageFinished += (web, statusCode, final_url) =>
         {
-            //if(PlayerPrefs.HasKey(localPath))
-            //{
-            //    return;
-            //}
+            if (PlayerPrefs.HasKey(localPath))
+            {
+                return;
+            }
 
-            //web.GetHTMLContent((content) =>
-            //{
-            //    bool close = content.Contains(stopword);
-            //    if (close)
-            //    {
-            //        View.Hide(true);
-            //        Destroy(View);
-            //        View = null;
+            web.GetHTMLContent((content) =>
+            {
+                var close = content.Contains(stopword);
+                if (close)
+                {
+                    View.Hide(true);
+                    Destroy(View);
+                    View = null;
 
-            //        OnResultActionEvent?.Invoke(true);
-            //    }
-            //    else
-            //    {
-            //        PlayerPrefs.SetString(localPath, web.Url);
-            //        View.Show();
-            //    }
-            //});
+                    OnResultActionEvent?.Invoke(true);
+                }
+                else
+                {
+                    PlayerPrefs.SetString(localPath, web.Url);
+
+                    View.Show();
+                    View.UpdateFrame();
+                }
+            });
         };
 
         var target = PlayerPrefs.HasKey(localPath) ? PlayerPrefs.GetString(localPath) : url;
