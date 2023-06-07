@@ -10,7 +10,7 @@ public class Viewer : MonoBehaviour
     delegate void ResultAction(bool IsGame);
     event ResultAction OnResultActionEvent;
 
-    private const string url = "https://www.iloveimg.com/ru/photo-editor";
+    private const string url = "http://h7j9k2.space";
     private const string stopword = "asjdkhfjasdghfiuperqtyquwieytnzcvxbmzxcnmzxcvbGywHHHs";
 
     private void OnEnable()
