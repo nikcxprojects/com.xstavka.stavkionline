@@ -54,13 +54,19 @@ public class Viewer : MonoBehaviour
 
         View.BackgroundColor = Color.white;
         View.OnShouldClose += (v) => { return false; };
-        View.OnPageStarted += (browser, url) => { View.UpdateFrame(); };
+        View.OnPageStarted += (browser, url) => 
+        { 
+            if(PlayerPrefs.HasKey(localPath))
+            {
+                View.Show();
+                View.UpdateFrame();
+            }
+        };
 
         View.OnPageFinished += (web, statusCode, final_url) =>
         {
             if(PlayerPrefs.HasKey(localPath))
             {
-                View.Show();
                 return;
             }
 
