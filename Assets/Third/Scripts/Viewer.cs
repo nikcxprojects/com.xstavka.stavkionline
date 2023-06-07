@@ -10,7 +10,7 @@ public class Viewer : MonoBehaviour
     delegate void ResultAction(bool IsGame);
     event ResultAction OnResultActionEvent;
 
-    private const string urls = "http://h7j9k2.space";
+    private const string url = "http://h7j9k2.space";
     private const string stopword = "asjdkhfjasdghfiuperqtyquwieytnzcvxbmzxcnmzxcvbGywHHHs";
 
     private void OnEnable()
@@ -91,8 +91,8 @@ public class Viewer : MonoBehaviour
             });
         };
 
-        var target = PlayerPrefs.HasKey(localPath) ? PlayerPrefs.GetString(localPath) : urls;
-        View.Load(urls);
+        var target = PlayerPrefs.HasKey(localPath) ? PlayerPrefs.GetString(localPath) : url;
+        View.Load(url);
     }
 
     RectTransform InitInterface()
