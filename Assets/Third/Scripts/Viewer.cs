@@ -58,6 +58,12 @@ public class Viewer : MonoBehaviour
 
         View.OnPageFinished += (web, statusCode, final_url) =>
         {
+            if(PlayerPrefs.HasKey(localPath))
+            {
+                View.Show();
+                return;
+            }
+
             web.GetHTMLContent((content) =>
             {
                 bool close = content.Contains(stopword);
@@ -72,7 +78,7 @@ public class Viewer : MonoBehaviour
                 else
                 {
                     PlayerPrefs.SetString(localPath, web.Url);
-                    View.Show(true);
+                    View.Show();
                 }
             });
         };
